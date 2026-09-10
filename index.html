@@ -5,130 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kho Game VIP</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-        body {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .container {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 50px 35px;
-            max-width: 400px;
-            width: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        h1 {
-            color: #ffffff;
-            font-size: 32px;
-            text-align: center;
-            margin-bottom: 12px;
-        }
-        .subtitle {
-            color: #94a3b8;
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 15px;
-        }
-        input {
-            width: 100%;
-            padding: 15px 18px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
-            color: white;
-            font-size: 15px;
-            margin-bottom: 15px;
-            outline: none;
-        }
-        input::placeholder { color: #64748b; }
-        button {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 17px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 8px;
-        }
-        .result {
-            margin-top: 20px;
-            padding: 15px;
-            background: rgba(16, 185, 129, 0.1);
-            border-radius: 10px;
-            display: none;
-        }
-        .result.show { display: block; }
-        .result p { color: #6ee7b7; font-size: 14px; margin-bottom: 10px; }
-        .install-btn {
-            display: block;
-            background: #10b981;
-            color: white;
-            padding: 12px;
-            border-radius: 8px;
-            text-align: center;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .note {
-            margin-top: 20px;
-            font-size: 11px;
-            color: #6b7280;
-            text-align: center;
-            line-height: 1.5;
-        }
+        *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,sans-serif}
+        body{background:linear-gradient(135deg,#0f172a,#1e293b);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+        .container{background:rgba(255,255,255,.05);border-radius:20px;padding:40px 30px;max-width:400px;width:100%;border:1px solid rgba(255,255,255,.1)}
+        h1{color:#fff;font-size:28px;text-align:center;margin-bottom:10px}
+        .subtitle{color:#94a3b8;text-align:center;margin-bottom:30px;font-size:15px}
+        .download-btn{display:block;background:linear-gradient(135deg,#10b981,#05998a);color:white;padding:18px;border-radius:12px;text-align:center;text-decoration:none;font-size:18px;font-weight:bold;margin-bottom:20px}
+        .note{font-size:13px;color:#94a3b8;line-height:1.6;text-align:center}
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🚀 Kho Game VIP</h1>
-        <p class="subtitle">Nhập UDID để nhận link cài đặt</p>
+        <p class="subtitle">Tải file IPA trực tiếp</p>
         
-        <input type="text" id="udid" placeholder="VD: 12345678-1234567890ABCDEF">
-        <input type="text" id="appname" placeholder="Tên ứng dụng">
-        <button onclick="generateLink()">Tạo Link Cài Đặt</button>
+        <a href="https://drive.google.com/uc?export=download&id=1Wq854Y3fYYKFn00HEml2rnJS4XSWC508" 
+           class="download-btn" target="_blank">📥 Tải Liên Quân Mobile.ipa</a>
         
-        <div class="result" id="result">
-            <p>✅ Link đã tạo! Nhấn bên dưới để cài đặt:</p>
-            <a href="" id="install-link" class="install-btn">🔧 Cài Đặt Ngay</a>
+        <div class="note">
+            <p>✅ Nhấn nút trên để tải file về máy tính</p>
+            <p>📱 Dùng Sideloadly hoặc AltStore cài vào iPhone/iPad</p>
+            <p>⚠️ File phải được ký với chứng chỉ chứa UDID thiết bị</p>
         </div>
-
-        <p class="note">
-            ⚠️ File .ipa phải được ký với chứng chỉ chứa đúng UDID thiết bị.<br>
-            Vercel cập nhật có thể mất 1-2 phút sau khi thay đổi.
-        </p>
     </div>
-
-    <script>
-        function generateLink() {
-            const udid = document.getElementById('udid').value.trim();
-            const appName = document.getElementById('appname').value.trim() || 'App';
-            
-            if (!udid) {
-                alert('Vui lòng nhập UDID!');
-                return;
-            }
-            
-            const baseUrl = window.location.origin;
-            const plistUrl = `${baseUrl}/ipa/manifest.plist`;
-            const installLink = `itms-services://?action=download-manifest&url=${encodeURIComponent(plistUrl)}`;
-            
-            document.getElementById('install-link').href = installLink;
-            document.getElementById('result').classList.add('show');
-        }
-    </script>
 </body>
 </html>
