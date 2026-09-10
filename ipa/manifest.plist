@@ -17,13 +17,13 @@
             <key>metadata</key>
             <dict>
                 <key>bundle-identifier</key>
-                <string>com.yourcompany.app</string>
+                <string>com.nghiencuu.lienquanmobile</string>
                 <key>bundle-version</key>
-                <string>1.0</string>
+                <string>1.63.11692</string>
                 <key>kind</key>
                 <string>software</string>
                 <key>title</key>
-                <string>My App</string>
+                <string>Liên Quân Mobile</string>
             </dict>
         </dict>
     </array>
