@@ -37,7 +37,7 @@
         .subtitle {
             color: #94a3b8;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             font-size: 15px;
         }
         input {
@@ -48,12 +48,10 @@
             border-radius: 12px;
             color: white;
             font-size: 15px;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
             outline: none;
         }
-        input::placeholder {
-            color: #64748b;
-        }
+        input::placeholder { color: #64748b; }
         button {
             width: 100%;
             padding: 16px;
@@ -66,21 +64,71 @@
             cursor: pointer;
             margin-top: 8px;
         }
-        .rocket {
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 10px;
+            display: none;
+        }
+        .result.show { display: block; }
+        .result p { color: #6ee7b7; font-size: 14px; margin-bottom: 10px; }
+        .install-btn {
+            display: block;
+            background: #10b981;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
             text-align: center;
-            font-size: 40px;
-            margin-bottom: 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .note {
+            margin-top: 20px;
+            font-size: 11px;
+            color: #6b7280;
+            text-align: center;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="rocket">🚀</div>
-        <h1>Kho Game VIP</h1>
-        <p class="subtitle">Hệ thống tự động nhận diện UDID của bạn</p>
-        <input type="text" placeholder="Nhập UDID thiết bị của bạn">
-        <input type="password" placeholder="Mật khẩu chứng chỉ P12">
-        <button onclick="alert('Đang xử lý...')">Vào kho game</button>
+        <h1>🚀 Kho Game VIP</h1>
+        <p class="subtitle">Nhập UDID để nhận link cài đặt</p>
+        
+        <input type="text" id="udid" placeholder="VD: 12345678-1234567890ABCDEF">
+        <input type="text" id="appname" placeholder="Tên ứng dụng">
+        <button onclick="generateLink()">Tạo Link Cài Đặt</button>
+        
+        <div class="result" id="result">
+            <p>✅ Link đã tạo! Nhấn bên dưới để cài đặt:</p>
+            <a href="" id="install-link" class="install-btn">🔧 Cài Đặt Ngay</a>
+        </div>
+
+        <p class="note">
+            ⚠️ File .ipa phải được ký với chứng chỉ chứa đúng UDID thiết bị.<br>
+            Vercel cập nhật có thể mất 1-2 phút sau khi thay đổi.
+        </p>
     </div>
+
+    <script>
+        function generateLink() {
+            const udid = document.getElementById('udid').value.trim();
+            const appName = document.getElementById('appname').value.trim() || 'App';
+            
+            if (!udid) {
+                alert('Vui lòng nhập UDID!');
+                return;
+            }
+            
+            const baseUrl = window.location.origin;
+            const plistUrl = `${baseUrl}/ipa/manifest.plist`;
+            const installLink = `itms-services://?action=download-manifest&url=${encodeURIComponent(plistUrl)}`;
+            
+            document.getElementById('install-link').href = installLink;
+            document.getElementById('result').classList.add('show');
+        }
+    </script>
 </body>
 </html>
