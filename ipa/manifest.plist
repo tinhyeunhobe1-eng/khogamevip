@@ -1,8 +1,0 @@
-        <div class="result" id="result">
-            <p>✅ Link đã sẵn sàng! Nhấn bên dưới để tải file IPA:</p>
-            <a href="https://drive.google.com/uc?export=download&id=1Wq854Y3fYYKFn00HEml2rnJS4XSWC508" 
-               target="_blank" class="install-btn">📥 Tải File IPA</a>
-            <p style="margin-top:12px; font-size:12px; color:#94a3b8;">
-                Sau khi tải về → mở file bằng Sideloadly hoặc AltStore để cài đặt
-            </p>
-        </div>
